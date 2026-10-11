@@ -1,0 +1,757 @@
+
+:root {
+
+  /* ==============================
+     COLORS
+  ============================== */
+
+  --bg-primary: #0f172a;
+  --bg-secondary: #172033;
+
+  --surface: #1e293b;
+  --surface-light: #263449;
+
+  --text-primary: #f8fafc;
+  --text-secondary: #cbd5e1;
+  --text-muted: #94a3b8;
+
+  --accent: #f5c451;
+  --accent-hover: #ffd66b;
+
+  --border: #334155;
+
+  --danger: #ef4444;
+  --success: #22c55e;
+
+  --shadow: rgba(0, 0, 0, 0.35);
+
+
+  /* ==============================
+     TYPOGRAPHY
+  ============================== */
+
+  --font-main: "Inter", sans-serif;
+  --font-mono: "Roboto Mono", monospace;
+}
+
+
+/* ==============================
+   RESET
+============================== */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+
+body {
+  min-height: 100vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 30px 16px;
+
+  background:
+    radial-gradient(
+      circle at top,
+      #1b2942 0%,
+      var(--bg-primary) 45%
+    );
+
+  color: var(--text-primary);
+
+  font-family: var(--font-main);
+}
+
+
+/* ==============================
+   MAIN PLAYER
+============================== */
+
+.music-player {
+  width: min(100%, 760px);
+
+  background: var(--bg-secondary);
+
+  border: 1px solid var(--border);
+  border-radius: 20px;
+
+  overflow: hidden;
+
+  box-shadow:
+    0 25px 60px var(--shadow);
+}
+
+
+/* ==============================
+   HEADER
+============================== */
+
+.player-header {
+  padding: 28px 32px;
+
+  text-align: center;
+
+  border-bottom: 1px solid var(--border);
+}
+
+
+.brand {
+  margin-bottom: 6px;
+
+  color: var(--accent);
+
+  font-family: var(--font-mono);
+
+  font-size: 0.75rem;
+  font-weight: 600;
+
+  letter-spacing: 0.2em;
+}
+
+
+.player-header h1 {
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  font-weight: 700;
+}
+
+
+/* ==============================
+   NOW PLAYING
+============================== */
+
+.now-playing {
+  display: grid;
+
+  grid-template-columns: 220px 1fr;
+
+  gap: 32px;
+
+  padding: 32px;
+}
+
+
+/* ==============================
+   ALBUM ART
+============================== */
+
+.album-art-container {
+  width: 220px;
+
+  aspect-ratio: 1;
+
+  overflow: hidden;
+
+  border: 1px solid var(--border);
+  border-radius: 16px;
+
+  background: var(--surface);
+
+  box-shadow:
+    0 15px 35px var(--shadow);
+}
+
+
+.album-art-container img {
+  width: 100%;
+  height: 100%;
+
+  display: block;
+
+  object-fit: cover;
+}
+
+
+/* ==============================
+   SONG INFORMATION
+============================== */
+
+.song-info {
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: center;
+}
+
+
+.eyebrow {
+  margin-bottom: 8px;
+
+  color: var(--accent);
+
+  font-family: var(--font-mono);
+
+  font-size: 0.7rem;
+  font-weight: 600;
+
+  letter-spacing: 0.15em;
+}
+
+
+.song-info h2 {
+  margin-bottom: 5px;
+
+  font-size: clamp(1.5rem, 4vw, 2rem);
+
+  line-height: 1.1;
+}
+
+
+.song-info > p:not(.eyebrow) {
+  margin-bottom: 26px;
+
+  color: var(--text-secondary);
+}
+
+
+/* ==============================
+   PROGRESS
+============================== */
+
+.progress-container {
+  display: grid;
+
+  grid-template-columns: auto 1fr auto;
+
+  align-items: center;
+
+  gap: 10px;
+
+  margin-bottom: 22px;
+
+  color: var(--text-muted);
+
+  font-family: var(--font-mono);
+
+  font-size: 0.7rem;
+}
+
+
+#progress-bar {
+  width: 100%;
+  height: 5px;
+
+  appearance: none;
+
+  border-radius: 999px;
+
+  background: var(--surface-light);
+
+  cursor: pointer;
+}
+
+
+#progress-bar::-webkit-slider-thumb {
+  appearance: none;
+
+  width: 14px;
+  height: 14px;
+
+  border: none;
+  border-radius: 50%;
+
+  background: var(--accent);
+
+  cursor: pointer;
+}
+
+
+#progress-bar::-moz-range-thumb {
+  width: 14px;
+  height: 14px;
+
+  border: none;
+  border-radius: 50%;
+
+  background: var(--accent);
+
+  cursor: pointer;
+}
+
+
+/* ==============================
+   PLAYER CONTROLS
+============================== */
+
+.player-controls {
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+}
+
+
+/* ==============================
+   CONTROL BUTTON
+============================== */
+
+.control-btn {
+  width: 48px;
+  height: 48px;
+
+  display: grid;
+  place-items: center;
+
+  padding: 0;
+
+  border: 1px solid var(--border);
+  border-radius: 14px;
+
+  background: var(--surface);
+
+  color: var(--text-primary);
+
+  cursor: pointer;
+
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+
+.control-btn svg {
+  width: 25px;
+  height: 25px;
+
+  display: block;
+
+  color: currentColor;
+}
+
+
+.control-btn:hover {
+  background: var(--surface-light);
+
+  border-color: var(--accent);
+
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 8px 18px rgba(0, 0, 0, 0.2);
+}
+
+
+.control-btn:active {
+  transform: translateY(0);
+}
+
+
+/* ==============================
+   MAIN PLAY BUTTON
+============================== */
+
+.control-btn-main {
+  width: 56px;
+  height: 56px;
+
+  border-radius: 16px;
+
+  background: var(--accent);
+
+  border-color: var(--accent);
+
+  color: #111827;
+}
+
+
+.control-btn-main:hover {
+  background: var(--accent-hover);
+
+  border-color: var(--accent-hover);
+
+  color: #111827;
+}
+
+
+.control-btn-main svg {
+  width: 27px;
+  height: 27px;
+}
+
+
+/* ==============================
+   PLAYLIST SECTION
+============================== */
+
+.playlist-section {
+  padding: 26px 32px 32px;
+
+  border-top: 1px solid var(--border);
+}
+
+
+.playlist-header {
+  display: flex;
+
+  justify-content: space-between;
+  align-items: center;
+
+  gap: 16px;
+
+  margin-bottom: 16px;
+}
+
+
+.playlist-header h2 {
+  font-size: 1.1rem;
+}
+
+
+#playlist-count {
+  color: var(--text-muted);
+
+  font-family: var(--font-mono);
+
+  font-size: 0.7rem;
+}
+
+
+/* ==============================
+   CLEAR PLAYLIST BUTTON
+============================== */
+
+.clear-playlist-btn {
+  padding: 10px 14px;
+
+  border: 1px solid var(--border);
+  border-radius: 10px;
+
+  background: var(--surface);
+
+  color: var(--text-secondary);
+
+  font-family: var(--font-main);
+  font-size: 0.8rem;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+
+.clear-playlist-btn:hover {
+  background: var(--surface-light);
+
+  color: var(--text-primary);
+
+  border-color: var(--danger);
+
+  transform: translateY(-1px);
+}
+
+
+.clear-playlist-btn:active {
+  transform: translateY(0);
+}
+
+
+/* ==============================
+   DYNAMIC PLAYLIST
+============================== */
+
+#playlist {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 8px;
+
+  list-style: none;
+
+  color: var(--text-primary);
+}
+
+
+.playlist-song {
+  min-height: 64px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+
+  padding: 10px 12px;
+
+  border: 1px solid var(--border);
+
+  border-radius: 12px;
+
+  background: var(--surface);
+
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+
+.playlist-song:hover {
+  background: var(--surface-light);
+
+  transform: translateX(2px);
+}
+
+
+.playlist-song.current-song {
+  border-color: var(--accent);
+
+  background: #292f3c;
+}
+
+
+/* ==============================
+   SONG BUTTON
+============================== */
+
+.song-button {
+  flex: 1;
+
+  display: grid;
+
+  grid-template-columns: 1.5fr 1fr auto;
+
+  align-items: center;
+
+  gap: 12px;
+
+  min-width: 0;
+
+  padding: 14px 16px;
+
+  border: none;
+  border-radius: 10px;
+
+  background: transparent;
+
+  color: var(--text-primary);
+
+  text-align: left;
+
+  font-family: var(--font-main);
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease;
+}
+
+
+.song-button:hover {
+  background: rgba(255, 255, 255, 0.04);
+}
+
+
+.song-title {
+  font-weight: 600;
+
+  overflow: hidden;
+
+  text-overflow: ellipsis;
+
+  white-space: nowrap;
+}
+
+
+.song-artist {
+  color: var(--text-secondary);
+
+  overflow: hidden;
+
+  text-overflow: ellipsis;
+
+  white-space: nowrap;
+}
+
+
+.song-duration {
+  color: var(--text-muted);
+
+  font-family: var(--font-mono);
+
+  font-size: 0.75rem;
+
+  white-space: nowrap;
+}
+
+
+/* ==============================
+   DELETE BUTTON
+============================== */
+
+.delete-button {
+  flex-shrink: 0;
+
+  padding: 10px 14px;
+
+  border: none;
+  border-radius: 10px;
+
+  background: var(--accent);
+
+  color: #111827;
+
+  font-family: var(--font-main);
+
+  font-size: 0.8rem;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+
+.delete-button:hover {
+  background: var(--accent-hover);
+
+  transform: translateY(-1px);
+}
+
+
+.delete-button:active {
+  transform: translateY(0);
+}
+
+
+/* ==============================
+   RESPONSIVE
+============================== */
+
+@media (max-width: 650px) {
+
+  body {
+    padding: 20px 12px;
+  }
+
+
+  .music-player {
+    border-radius: 16px;
+  }
+
+
+  .now-playing {
+    grid-template-columns: 1fr;
+
+    gap: 24px;
+
+    padding: 24px;
+  }
+
+
+  .album-art-container {
+    width: min(100%, 240px);
+
+    margin: 0 auto;
+  }
+
+
+  .song-info {
+    text-align: center;
+  }
+
+
+  .player-controls {
+    justify-content: center;
+  }
+
+
+  .playlist-section {
+    padding: 24px;
+  }
+
+
+  .song-button {
+    grid-template-columns: 1fr auto;
+  }
+
+
+  .song-artist {
+    display: none;
+  }
+
+}
+
+
+@media (max-width: 420px) {
+
+  .player-header {
+    padding: 22px 18px;
+  }
+
+
+  .now-playing {
+    padding: 20px;
+  }
+
+
+  .playlist-section {
+    padding: 20px;
+  }
+
+
+  .playlist-header {
+    align-items: flex-start;
+
+    flex-direction: column;
+  }
+
+
+  .control-btn {
+    width: 42px;
+    height: 42px;
+
+    border-radius: 12px;
+  }
+
+
+  .control-btn-main {
+    width: 50px;
+    height: 50px;
+
+    border-radius: 14px;
+  }
+
+
+  .control-btn svg {
+    width: 23px;
+    height: 23px;
+  }
+
+
+  .control-btn-main svg {
+    width: 25px;
+    height: 25px;
+  }
+
+
+  .playlist-song {
+    padding: 8px;
+  }
+
+
+  .song-button {
+    padding: 12px;
+  }
+
+
+  .delete-button {
+    padding: 9px 10px;
+  }
+
+}

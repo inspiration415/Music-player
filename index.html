@@ -1,0 +1,283 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Music Player</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Roboto+Mono:wght@500;600&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+  <main class="music-player">
+
+    <!-- HEADER -->
+    <header class="player-header">
+      <p class="brand">MUSIC PLAYER</p>
+      <h1>My Playlist</h1>
+    </header>
+
+
+    <!-- CURRENT SONG -->
+    <section class="now-playing">
+
+      <div class="album-art-container">
+        <img
+          id="album-art"
+          src="https://placehold.co/300x300/1e293b/f8fafc?text=Music"
+          alt="Album artwork"
+        >
+      </div>
+
+
+      <div class="song-info">
+
+        <p class="eyebrow">NOW PLAYING</p>
+
+        <h2 id="song-title">No song selected</h2>
+
+        <p id="song-artist">
+          Select a song from your playlist
+        </p>
+
+
+        <!-- PROGRESS -->
+        <div class="progress-container">
+
+          <span id="current-time">0:00</span>
+
+          <input
+            id="progress-bar"
+            type="range"
+            min="0"
+            max="100"
+            value="0"
+            step="0.1"
+            aria-label="Song progress"
+          >
+
+          <span id="duration">0:00</span>
+
+        </div>
+
+
+        <!-- PLAYER CONTROLS -->
+        <div class="player-controls">
+
+          <!-- PREVIOUS -->
+          <button
+            id="previous"
+            class="control-btn"
+            type="button"
+            aria-label="Previous song"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              width="24"
+              height="24"
+              fill="currentColor"
+              aria-hidden="true"
+            >
+              <rect
+                x="5.5"
+                y="6"
+                width="2.5"
+                height="12"
+                rx="1.25"
+              ></rect>
+
+              <path d="M18 6L9 12l9 6V6Z"></path>
+            </svg>
+          </button>
+
+
+          <!-- PLAY -->
+          <button
+            id="play"
+            class="control-btn"
+            type="button"
+            aria-label="Play"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              width="24"
+              height="24"
+              fill="currentColor"
+              aria-hidden="true"
+            >
+              <path d="M8 5.5v13a1 1 0 0 0 1.54.84l9-6.5a1 1 0 0 0 0-1.68l-9-6.5A1 1 0 0 0 8 5.5Z"></path>
+            </svg>
+          </button>
+
+
+          <!-- PAUSE -->
+          <button
+            id="pause"
+            class="control-btn"
+            type="button"
+            aria-label="Pause"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              width="24"
+              height="24"
+              fill="currentColor"
+              aria-hidden="true"
+            >
+              <rect
+                x="7"
+                y="6"
+                width="3.5"
+                height="12"
+                rx="1.5"
+              ></rect>
+
+              <rect
+                x="13.5"
+                y="6"
+                width="3.5"
+                height="12"
+                rx="1.5"
+              ></rect>
+            </svg>
+          </button>
+
+
+          <!-- NEXT -->
+          <button
+            id="next"
+            class="control-btn"
+            type="button"
+            aria-label="Next song"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              width="24"
+              height="24"
+              fill="currentColor"
+              aria-hidden="true"
+            >
+              <path d="M6 6v12l9-6-9-6Z"></path>
+
+              <rect
+                x="17"
+                y="6"
+                width="2.5"
+                height="12"
+                rx="1.25"
+              ></rect>
+            </svg>
+          </button>
+
+
+          <!-- SHUFFLE -->
+          <button
+            id="shuffle"
+            class="control-btn"
+            type="button"
+            aria-label="Shuffle playlist"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              width="24"
+              height="24"
+              fill="none"
+              aria-hidden="true"
+            >
+              <path
+                d="M4 7h2.5c4.5 0 5.5 10 11 10H20"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+              ></path>
+
+              <path
+                d="m17 14.5 3 2.5-3 2.5"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              ></path>
+
+              <path
+                d="M4 17h2c1.8 0 3.2-1.4 4.3-3.2M14 10.2c1-1.7 2.2-3.2 4.2-3.2H20"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+              ></path>
+
+              <path
+                d="m17 4.5 3 2.5-3 2.5"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              ></path>
+            </svg>
+          </button>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- AUDIO ELEMENT -->
+    <audio id="audio"></audio>
+
+
+    <!-- PLAYLIST -->
+    <section class="playlist-section">
+
+      <div class="playlist-header">
+
+        <div>
+          <h2>Playlist</h2>
+
+          <span id="playlist-count">
+            0 songs
+          </span>
+        </div>
+
+        <!-- CLEAR PLAYLIST -->
+        <button
+          id="clear-playlist"
+          class="clear-playlist-btn"
+          type="button"
+        >
+          Clear Playlist
+        </button>
+
+      </div>
+
+
+      <!-- JavaScript dynamically generates playlist items here -->
+      <ul id="playlist"></ul>
+
+    </section>
+
+  </main>
+
+
+  <script src="script.js"></script>
+
+</body>
+</html>
