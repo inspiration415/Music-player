@@ -44,7 +44,7 @@ const allSongs = [
         title: "Harbor_in_Your_Arms",
         artist: "Gemini",
         duration: "2:47",
-        src: "./music/Harbor_in_Your_Arms.mp3",
+        src: "./music/Harbor_In_Your_Arms.mp3",
     },
     {
         id: 5,
@@ -271,12 +271,4 @@ const clearPlaylist = () => {
 
 clearPlaylistButton.addEventListener("click", () => {
     clearPlaylist();
-})
-
-
-
-
-
-
-
- 
+});
